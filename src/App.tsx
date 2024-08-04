@@ -1,10 +1,10 @@
 import './App.css';
-import wallpaper from './assets/wallpaper1.png';
+import Start from './starting/Starting';
 
 function App() {
   return (
     <>
-      <img src={wallpaper} className="wallpaper" id="wallpaper" />
+      <Start />
     </>
   );
 }

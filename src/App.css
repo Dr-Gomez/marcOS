@@ -18,20 +18,8 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   overflow: hidden;
   overflow-x: hidden;
   overflow-y: hidden;
-}
-
-.wallpaper {
-  position: absolute;
-  width: calc(100vmax * 16 / 9);
-  height: calc(100vmax);
-  margin: 0;
-  padding: 0;
-  z-index: 0;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
