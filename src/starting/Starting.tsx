@@ -2,15 +2,40 @@ import './Starting.css';
 import photoID from '../assets/starting/photoID.png';
 import wallpaper from '../assets/starting/wallpaper.png';
 import PasswordPrompt from './Password.tsx';
+import { useEffect, useState } from 'react';
 
 function Starting() {
-  function start(e: KeyboardEventInit) {
+  const [started, setStarted] = useState(false);
+
+  const handleStart = () => {
+    setStarted(true);
+  };
+
+  const enterStart = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
-      console.log('Enter pressed');
-      document.removeEventListener('keydown', start);
+      setStarted(true);
+      console.log('Code reached');
+      document.removeEventListener('keydown', enterStart);
+      document.removeEventListener('mousedown', handleStart);
     }
+  };
+
+  useEffect(() => {
+    const startButton = document.getElementById('login');
+    const passwordPrompt = document.getElementById('passwordPrompt');
+
+    startButton?.addEventListener('mousedown', handleStart);
+    passwordPrompt?.addEventListener('keydown', enterStart);
+
+    return () => {
+      startButton?.removeEventListener('mousedown', handleStart);
+      passwordPrompt?.removeEventListener('keydown', enterStart);
+    };
+  });
+
+  if (started) {
+    return <></>;
   }
-  document.addEventListener('keydown', start);
 
   return (
     <>

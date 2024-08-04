@@ -17,7 +17,7 @@ function PasswordHandler() {
     } else if (ignoreNext && inputValue.length > 0) {
       setIgnoreNext(false);
     } else {
-      while (lastChar == newChar) {
+      while (lastChar === newChar) {
         newChar =
           shhhCharacters[Math.floor(Math.random() * shhhCharacters.length)];
       }
