@@ -1,0 +1,20 @@
+Chapter 2: The Pledge of Servitude
+------------------------------------------------------------------------
+
+General:
+  - Creates PATCHNOTES.txt (Version notes)
+
+Server:
+  - Creates serve.void  (Perl HTTP server)
+  - Creates server root (src directory)
+
+------------------------------------------------------------------------
+Chapter 1: The Departure
+------------------------------------------------------------------------
+
+General:
+  - Created LICENSE.txt
+  - Created README.md
+
+V01d05:
+  - ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>-------...
