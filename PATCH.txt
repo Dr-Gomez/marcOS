@@ -1,3 +1,11 @@
+Chapter 2: The Pledge of Servitude
+------------------------------------------------------------------------
+
+Server:
+  - Creates serve.void  (Perl HTTP server)
+  - Creates server root (src directory)
+
+------------------------------------------------------------------------
 Chapter 1: The Departure
 ------------------------------------------------------------------------
 
