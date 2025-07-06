@@ -1,0 +1,7 @@
+Chapter 1: The Departure
+------------------------------------------------------------------------
+
+General:
+  - Created LICENSE.txt
+  - Created README.md
+  - Creates PATCH.txt (Chapter notes)
