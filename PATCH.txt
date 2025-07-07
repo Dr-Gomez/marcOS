@@ -1,3 +1,12 @@
+Chapter 4: The Acknowledgment of Disharmony
+------------------------------------------------------------------------
+
+Site:
+  - Creates WIOS directory (Web Input Output System) for compatibility
+  - Creates checkAPI.js script to check available browser APIs
+  - Updates index.html to add checkAPI's API to the browser
+
+------------------------------------------------------------------------
 Chapter 3: The Timeless Piece
 ------------------------------------------------------------------------
 
