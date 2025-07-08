@@ -1,3 +1,11 @@
+Chapter 5: The Beacon of Reason
+------------------------------------------------------------------------
+
+Site:
+  - Creates terminal.js to standardize logging across browsers
+  - Updates index.html to add terminal API to the browser
+
+------------------------------------------------------------------------
 Chapter 4: The Acknowledgment of Disharmony
 ------------------------------------------------------------------------
 
