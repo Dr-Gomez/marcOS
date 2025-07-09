@@ -1,3 +1,13 @@
+Chapter 6: The Clarity of Remembrance
+------------------------------------------------------------------------
+
+Site:
+  - Updates terminal.js to include a standardized clear function
+  - Updates terminal.js to include dynamic dependency checks
+  - Updates terminal.js to support anonymous (traceless) logs
+  - Updates terminal.js to include signal types
+
+------------------------------------------------------------------------
 Chapter 5: The Beacon of Reason
 ------------------------------------------------------------------------
 
