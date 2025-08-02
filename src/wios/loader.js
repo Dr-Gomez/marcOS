@@ -71,6 +71,10 @@
       };
 
       marcOS.loader.bulkJS = function (scripts, callback) {
+        if (!callback) {
+          callback = function () {};
+        }
+
         function loadNextScript(index) {
           if (index >= scripts.length) {
             callback();
