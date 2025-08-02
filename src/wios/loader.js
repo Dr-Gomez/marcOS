@@ -69,6 +69,23 @@
         callHandler(script, callback);
         location.appendChild(script);
       };
+
+      marcOS.loader.bulkJS = function (scripts, callback) {
+        function loadNextScript(index) {
+          if (index >= scripts.length) {
+            callback();
+            return;
+          }
+
+          var scriptSrc = scripts[index];
+
+          marcOS.loader.loadJS(scriptSrc, function () {
+            loadNextScript(index + 1);
+          });
+        }
+
+        loadNextScript(0);
+      };
     }
   };
 
