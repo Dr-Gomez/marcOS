@@ -3,6 +3,8 @@
   var BUTTON_WIDTH = 18;
   var SNAP_ZONE = 64;
 
+  var monitor = marcOS.monitor;
+
   var popup = {};
 
   var style = document.createElement("link");
@@ -41,23 +43,46 @@
 
     var leftSnap, topSnap, rightSnap, bottomSnap;
 
-    document.onmousemove = function (e) {
+    function getWidth() {
+      return innerWidth || screen.availWidth || screen.width;
+    }
+
+    function getHeight() {
+      return innerHeight || screen.availHeight || screen.height;
+    }
+
+    var styler = frame.style;
+
+    function setStrPos(top, right, bottom, left) {
+      styler.top = top;
+      styler.right = right;
+      styler.bottom = bottom;
+      styler.left = left;
+    }
+
+    function pixelate(number) {
+      console.log(number.toString() + "px");
+      return number.toString() + "px";
+    }
+
+    function setSize(widthNorm, heightNorm) {
+      styler.width = pixelate(widthNorm * getWidth());
+      styler.height = pixelate(heightNorm * getHeight());
+    }
+
+    document.addEventListener("mousemove", function (e) {
       if (isDragging) {
         e = e || window.event;
 
         var left = e.clientX;
         var top = e.clientY;
 
-        frame.style.left = (left - offsetX).toString() + "px";
-        frame.style.top = (top - offsetY).toString() + "px";
+        setStrPos(pixelate(top - offsetY), "", "", pixelate(left - offsetX));
 
-        if (left < 100) {
+        if (left < SNAP_ZONE) {
           leftSnap = true;
           rightSnap = false;
-        } else if (
-          left >
-          (window.innerWidth || screen.availWidth || screen.width) - SNAP_ZONE
-        ) {
+        } else if (left > getWidth() - SNAP_ZONE) {
           leftSnap = false;
           rightSnap = true;
         } else {
@@ -65,7 +90,7 @@
           rightSnap = false;
         }
 
-        if (top < 100) {
+        if (top < SNAP_ZONE) {
           topSnap = true;
           bottomSnap = false;
         } else if (
@@ -80,69 +105,38 @@
           bottomSnap = false;
         }
       }
-    };
+    });
 
-    document.onmouseup = function () {
-      isDragging = false;
-
-      if (topSnap && leftSnap) {
-        frame.style.left = "0";
-        frame.style.right = "";
-        frame.style.top = "0";
-        frame.style.bottom = "";
-        frame.style.width = "50%";
-        frame.style.height = "50%";
-      } else if (topSnap && rightSnap) {
-        frame.style.right = "0";
-        frame.style.left = "";
-        frame.style.top = "0";
-        frame.style.bottom = "";
-        frame.style.width = "50%";
-        frame.style.height = "50%";
-      } else if (bottomSnap && rightSnap) {
-        frame.style.right = "0";
-        frame.style.left = "";
-        frame.style.bottom = "0";
-        frame.style.top = "";
-        frame.style.width = "50%";
-        frame.style.height = "50%";
-      } else if (bottomSnap && leftSnap) {
-        frame.style.left = "0";
-        frame.style.right = "";
-        frame.style.bottom = "0";
-        frame.style.top = "";
-        frame.style.width = "50%";
-        frame.style.height = "50%";
-      } else if (topSnap) {
-        frame.style.left = "0";
-        frame.style.right = "";
-        frame.style.top = "0";
-        frame.style.bottom = "";
-        frame.style.width = "100%";
-        frame.style.height = "50%";
-      } else if (rightSnap) {
-        frame.style.right = "0";
-        frame.style.left = "";
-        frame.style.top = "0";
-        frame.style.bottom = "";
-        frame.style.width = "50%";
-        frame.style.height = "100%";
-      } else if (bottomSnap) {
-        frame.style.left = "0";
-        frame.style.right = "";
-        frame.style.bottom = "0";
-        frame.style.top = "";
-        frame.style.width = "100%";
-        frame.style.height = "50%";
-      } else if (leftSnap) {
-        frame.style.left = "0";
-        frame.style.right = "";
-        frame.style.top = "0";
-        frame.style.bottom = "";
-        frame.style.width = "50%";
-        frame.style.height = "100%";
+    document.addEventListener("mouseup", function () {
+      if (isDragging) {
+        if (topSnap && leftSnap) {
+          setStrPos("0", "", "", "0");
+          setSize(0.5, 0.5);
+        } else if (topSnap && rightSnap) {
+          setStrPos("0", "0", "", "");
+          setSize(0.5, 0.5);
+        } else if (bottomSnap && rightSnap) {
+          setStrPos("", "0", "0", "");
+          setSize(0.5, 0.5);
+        } else if (bottomSnap && leftSnap) {
+          setStrPos("", "", "0", "0");
+          setSize(0.5, 0.5);
+        } else if (topSnap) {
+          setStrPos("0", "", "", "0");
+          setSize(1, 0.5);
+        } else if (rightSnap) {
+          setStrPos("0", "0", "", "");
+          setSize(0.5, 1);
+        } else if (bottomSnap) {
+          setStrPos("", "", "0", "0");
+          setSize(1, 0.5);
+        } else if (leftSnap) {
+          setStrPos("0", "", "", "0");
+          setSize(0.5, 1);
+        }
+        isDragging = false;
       }
-    };
+    });
 
     var title = document.createElement("span");
     title.className = "popupTitle";
@@ -172,20 +166,16 @@
     });
 
     makeButton("yellow", function () {
-      monitor.style.display = "none";
+      frame.style.display = "none";
     });
 
     makeButton("lime", function () {
-      frame.style.top = "0";
-      frame.style.left = "0";
-      frame.style.width = "100%";
-      frame.style.height = "100%";
+      setStrPos("0", "", "", "0");
+      setSize(1, 1);
     });
 
     return frame;
   };
 
   marcOS.shell.popup = popup;
-
-  monitor.appendChild(popup.create({ title: "Do" }));
 })();
