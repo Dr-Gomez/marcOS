@@ -1,5 +1,12 @@
 (function () {
   var bulkJS = marcOS.loader.bulkJS;
 
-  bulkJS(["system/clear.js", "system/shell.js"]);
+  var base = "system/";
+
+  bulkJS([
+    base + "clear.js",
+    base + "monitor.js",
+    base + "kernel.js",
+    base + "shell.js",
+  ]);
 })();

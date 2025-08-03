@@ -4,13 +4,11 @@
   var SNAP_ZONE = 64;
 
   var monitor = marcOS.monitor;
+  var loadCSS = marcOS.kernel.loader.loadCSS;
 
   var popup = {};
 
-  var style = document.createElement("link");
-  style.rel = "stylesheet";
-  style.href = "system/shell/popup.css";
-  document.head.appendChild(style);
+  loadCSS("system/shell/popup.css");
 
   popup.create = function (props) {
     if (!props) {

@@ -1,6 +1,7 @@
 (function () {
   var bulkJS = marcOS.loader.bulkJS;
+  var base = "system/shell/";
 
   marcOS.shell = {};
-  bulkJS(["system/shell/monitor.js", "system/shell/popup.js"]);
+  bulkJS([base + "popup.js"]);
 })();
