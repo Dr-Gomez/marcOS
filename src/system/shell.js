@@ -3,5 +3,5 @@
   var base = "system/shell/";
 
   marcOS.shell = {};
-  bulkJS([base + "popup.js"]);
+  bulkJS([base + "splash.js", base + "popup.js"]);
 })();

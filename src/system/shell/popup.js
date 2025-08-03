@@ -172,6 +172,8 @@
       setSize(1, 1);
     });
 
+    monitor.appendChild(frame);
+
     return frame;
   };
 
