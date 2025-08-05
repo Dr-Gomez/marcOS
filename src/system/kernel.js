@@ -1,5 +1,5 @@
 (function () {
-  var bulkJS = marcOS.loader.bulkJS;
+  var bulkJS = wios.loader.bulkJS;
 
   var base = "system/kernel/";
 

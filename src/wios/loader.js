@@ -1,97 +1,64 @@
 (function () {
-  var hasFeature = marcOS.feat.hasFeature;
+  var loader = {};
 
-  marcOS.initLoader = function () {
-    var canCreate = hasFeature("document.createElement");
-    var canAppend = hasFeature("document.appendChild");
+  var hasFeature = wios.feat.hasFeatures;
 
-    if (canCreate && canAppend) {
-      marcOS.loader = {};
+  if (hasFeature(["document.createElement", "document.appendChild"])) {
+    var canDefer, location;
+    var testScript = document.createElement("script");
+    if (typeof testScript.defer != "undefined") {
+      canDefer = true;
+      location = document.head;
+    } else {
+      canDefer = false;
+      location = document.createElement("div");
+      document.body.appendChild(location);
+    }
 
-      var testScript = document.createElement("script");
+    function loadPlainJS(src) {
+      var script = document.createElement("script");
+      script.src = src;
+      script.type = "text/javascript";
+      script.defer = canDefer;
+      location.appendChild(script);
 
-      var hasOnload = hasFeature("onload", testScript);
-      var hasDefer;
+      return script;
+    }
 
-      var location;
-      var callHandler;
-      if (hasOnload) {
-        hasDefer = hasFeature("defer", testScript);
+    function hasCallback(callback) {
+      if (callback && typeof callback == "function") {
+        return true;
+      } else {
+        return false;
+      }
+    }
 
-        if (hasDefer) {
-          location = document.head;
-        } else {
-          location = document.body;
-        }
+    loader.loadJS = function (source, callback) {
+      var script = loadPlainJS(source);
+      if (hasCallback(callback)) {
+        script.onload = callback;
+      }
+      return script;
+    };
 
-        callHandler = function (script, call) {
-          script.onload = call;
-        };
-      } else if (hasFeature("getElementById", document)) {
-        hasDefer = false;
-
-        location = document.body;
-
-        var callstack = [];
-        marcOS.callstack = callstack;
-
-        var container = document.getElementById("callbacks");
-        if (!container) {
-          container = document.createElement("div");
-          container.id = "callbacks";
-          document.body.appendChild(container);
-        }
-
-        callHandler = function (_script, call) {
-          callstack[callstack.length] = call;
-
-          var oddScript = document.getElementById("oddCallback");
-          var evenScript = document.getElementById("evenCallback");
-
-          if (!(oddScript || evenScript)) {
-            var callbackScript = document.createElement("script");
-            callbackScript.src = "wios/callbacks/oddCallback.js";
-            callbackScript.id = "oddCallback";
-            container.appendChild(callbackScript);
-          }
-        };
+    function loadNextScript(sources, sourceIndex, callback) {
+      if (sourceIndex >= sources.length) {
+        if (typeof callback == "function") callback();
+        return;
       }
 
-      marcOS.loader.loadJS = function (src, callback) {
-        if (!callback) {
-          callback = function () {};
-        }
+      var source = sources[sourceIndex];
 
-        var script = document.createElement("script");
-        script.src = src;
-        script.async = false;
-        script.defer = hasDefer;
-        callHandler(script, callback);
-        location.appendChild(script);
-      };
-
-      marcOS.loader.bulkJS = function (scripts, callback) {
-        if (!callback) {
-          callback = function () {};
-        }
-
-        function loadNextScript(index) {
-          if (index >= scripts.length) {
-            callback();
-            return;
-          }
-
-          var scriptSrc = scripts[index];
-
-          marcOS.loader.loadJS(scriptSrc, function () {
-            loadNextScript(index + 1);
-          });
-        }
-
-        loadNextScript(0);
+      var script = loadPlainJS(source);
+      script.onload = function () {
+        loadNextScript(sources, sourceIndex + 1, callback);
       };
     }
-  };
 
-  marcOS.initLoader();
+    loader.bulkJS = function (sources, callback) {
+      loadNextScript(sources, 0, callback);
+    };
+
+    wios.loader = loader;
+  }
 })();

@@ -1,5 +1,4 @@
 (function () {
-  var hasFeature = marcOS.feat.hasFeature;
   var monitor = marcOS.monitor;
   var loadCSS = marcOS.kernel.loader.loadCSS;
 
@@ -16,23 +15,23 @@
       props = {};
     }
 
-    if (!hasFeature("type", props)) {
+    if (typeof props.type == "undefined") {
       props.type = "image";
     }
 
     if (props.type == "image") {
       splashScreen = document.createElement("img");
-      if (hasFeature("src", props)) {
-        splashScreen.src = props.src;
-      } else {
+      if (typeof props.src == "undefined") {
         splashScreen.src = "system/default/rosie-pixelated.jpeg";
-      }
-    } else if (props.type == "flat") {
-      splashScreen = document.createElement("div");
-      if (hasFeature("color", props)) {
-        splashScreen.style.backgroundColor = props.color;
       } else {
+        splashScreen.src = props.src;
+      }
+    } else {
+      splashScreen = document.createElement("div");
+      if (typeof props.color == undefined) {
         splashScreen.style.backgroundColor = "navy";
+      } else {
+        splashScreen.style.backgroundColor = props.color;
       }
     }
 
@@ -51,4 +50,5 @@
   };
 
   marcOS.shell.splash = splash;
+  splash.show();
 })();

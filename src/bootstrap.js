@@ -1,12 +1,12 @@
 (function () {
-  var bulkJS = marcOS.loader.bulkJS;
+  var bulkJS = wios.loader.bulkJS;
 
   var base = "system/";
 
   bulkJS([
+    base + "kernel.js",
     base + "clear.js",
     base + "monitor.js",
-    base + "kernel.js",
     base + "shell.js",
   ]);
 })();

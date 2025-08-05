@@ -178,4 +178,6 @@
   };
 
   marcOS.shell.popup = popup;
+
+  marcOS.shell.popup.create();
 })();

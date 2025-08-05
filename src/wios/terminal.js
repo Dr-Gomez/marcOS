@@ -51,7 +51,7 @@
     var clearSpace = repeatChar("\n", 64);
 
     function consoleHas(feature) {
-      return marcOS.feat.hasFeature(feature, console);
+      return wios.feat.hasFeature(feature, console);
     }
 
     function wrapLog(text, type, color) {
@@ -246,21 +246,21 @@
     return terminal;
   }
 
-  marcOS.initTerminal = function () {
-    var absentLogs = marcOS.feat.checkFeatures(["console", "status"]);
+  wios.initTerminal = function () {
+    var absentLogs = wios.feat.checkFeatures(["console", "status"]);
 
     if (absentLogs.length == 0) {
-      marcOS.terminal = initInfo();
+      wios.terminal = initInfo();
     } else if (absentLogs.length == 1) {
       if (absentLogs[0] == "status") {
-        marcOS.terminal = initConsole();
+        wios.terminal = initConsole();
       } else if (absentLogs[0] == "console") {
-        marcOS.terminal = initStatus();
+        wios.terminal = initStatus();
       }
     } else {
-      marcOS.terminal = initUnknown();
+      wios.terminal = initUnknown();
     }
   };
 
-  marcOS.initTerminal();
+  wios.initTerminal();
 })();

@@ -1,5 +1,5 @@
 (function () {
-  var bulkJS = marcOS.loader.bulkJS;
+  var bulkJS = marcOS.kernel.loader.bulkJS;
   var base = "system/shell/";
 
   marcOS.shell = {};

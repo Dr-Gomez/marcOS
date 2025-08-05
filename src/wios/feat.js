@@ -65,5 +65,5 @@
     return true;
   };
 
-  marcOS.feat = feat;
+  wios.feat = feat;
 })();
