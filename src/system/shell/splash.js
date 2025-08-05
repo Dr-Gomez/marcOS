@@ -4,8 +4,6 @@
 
   var splash = {};
 
-  loadCSS("system/shell/splash.css");
-
   splash.show = function (props) {
     var splashScreen = document.getElementById("splash");
     if (splashScreen) {
@@ -50,5 +48,4 @@
   };
 
   marcOS.shell.splash = splash;
-  splash.show();
 })();
