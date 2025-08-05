@@ -9,6 +9,7 @@
       shell: {
         popup: ["js", "css"],
         splash: ["js", "css"],
+        clock: "js",
       },
     },
   });

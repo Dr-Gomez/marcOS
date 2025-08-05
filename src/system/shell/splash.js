@@ -6,7 +6,7 @@
   splash.show = function (props) {
     var splashScreen = document.getElementById("splash");
     if (splashScreen) {
-      marcOS.monitor.removeChild(splashScreen);
+      monitor.removeChild(splashScreen);
     }
     if (!props) {
       props = {};
@@ -42,7 +42,7 @@
   splash.shoo = function () {
     var splashScreen = document.getElementById("splash");
     if (splashScreen) {
-      marcOS.monitor.removeChild(splashScreen);
+      monitor.removeChild(splashScreen);
     }
   };
 
