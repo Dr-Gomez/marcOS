@@ -8,5 +8,5 @@
   monitor.style.backgroundColor = "black";
   document.body.appendChild(monitor);
 
-  marcOS.monitor = monitor;
+  marcOS.system.monitor = monitor;
 })();

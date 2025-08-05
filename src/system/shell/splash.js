@@ -47,5 +47,5 @@
     }
   };
 
-  marcOS.shell.splash = splash;
+  marcOS.system.shell.splash = splash;
 })();

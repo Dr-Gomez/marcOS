@@ -56,14 +56,14 @@
         for (extIndex; extIndex < extension.length; extIndex++) {
           var extensionStr = extension[extIndex];
           loaderMap[extensionStr](path + "/" + object + "." + extensionStr);
-          console.log(extensionStr);
         }
       } else if (describes(extension)) {
         loaderMap[extension](path + "/" + object + "." + extension);
       } else if (groups(extension)) {
         domain[object] = {};
+        domain = domain[object];
         path += "/" + object;
-        loader.loadTree(extension, path);
+        loader.loadTree(extension, path, domain);
       }
     }
   };

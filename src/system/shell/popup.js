@@ -176,5 +176,5 @@
     return frame;
   };
 
-  marcOS.shell.popup = popup;
+  marcOS.system.shell.popup = popup;
 })();
