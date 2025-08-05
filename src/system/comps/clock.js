@@ -1,5 +1,5 @@
 (function () {
-  clock = {};
+  var clock = {};
 
   function padZero(num) {
     if (num < 10) {
@@ -46,5 +46,5 @@
     clearInterval(timer.timeoutId);
   };
 
-  marcOS.system.shell.clock = clock;
+  marcOS.system.comps.clock = clock;
 })();

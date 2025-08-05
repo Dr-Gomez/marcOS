@@ -61,8 +61,7 @@
         loaderMap[extension](path + "/" + object + "." + extension);
       } else if (groups(extension)) {
         domain[object] = {};
-        domain = domain[object];
-        loader.loadTree(extension, path + "/" + object, domain);
+        loader.loadTree(extension, path + "/" + object, domain[object]);
       }
     }
   };
