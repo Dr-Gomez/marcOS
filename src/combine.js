@@ -9,8 +9,13 @@
       shell: {
         popup: ["js", "css"],
         splash: ["js", "css"],
+      },
+
+      comps: {
         clock: "js",
       },
+
+      gate: ["js", "css"],
     },
   });
 })();
