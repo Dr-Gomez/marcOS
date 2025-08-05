@@ -1,6 +1,5 @@
 (function () {
-  var monitor = marcOS.monitor;
-  var loadCSS = marcOS.kernel.loader.loadCSS;
+  var monitor = marcOS.system.monitor;
 
   var splash = {};
 

@@ -3,8 +3,7 @@
   var BUTTON_WIDTH = 18;
   var SNAP_ZONE = 64;
 
-  var monitor = marcOS.monitor;
-  var loadCSS = marcOS.kernel.loader.loadCSS;
+  var monitor = marcOS.system.monitor;
 
   var popup = {};
 

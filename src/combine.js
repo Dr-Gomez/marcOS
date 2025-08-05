@@ -5,12 +5,11 @@
     system: {
       clear: "js",
       monitor: "js",
+
       shell: {
         popup: ["js", "css"],
         splash: ["js", "css"],
       },
     },
   });
-
-  console.log(marcOS);
 })();
