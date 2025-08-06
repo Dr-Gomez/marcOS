@@ -8,6 +8,7 @@
 
       comps: {
         clock: "js",
+        calendar: "js",
       },
 
       shell: {

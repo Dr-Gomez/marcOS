@@ -35,10 +35,6 @@
     }, 1000);
     updateClock(time);
 
-    timer.halt = function () {
-      clearInterval(timeoutId);
-    };
-
     return timer;
   };
 
