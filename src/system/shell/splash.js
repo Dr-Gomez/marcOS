@@ -46,5 +46,19 @@
     }
   };
 
+  splash.squint = function () {
+    var splashScreen = document.getElementById("splash");
+    if (splashScreen) {
+      splashScreen.style.filter = "blur(10px)";
+    }
+  };
+
+  splash.widen = function () {
+    var splashScreen = document.getElementById("splash");
+    if (splashScreen) {
+      splashScreen.style.filter = "blur(0)";
+    }
+  };
+
   marcOS.system.shell.splash = splash;
 })();

@@ -23,9 +23,6 @@
     var gateCalendar = calendar.mark();
     gateCalendar.className = "gateCalendar";
     gateBars.appendChild(gateCalendar);
-
-    var gateHandle = document.createElement("div");
-    gateHandle;
   }
 
   function hideBlockade() {
