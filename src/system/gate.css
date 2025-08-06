@@ -1,21 +1,32 @@
 .gateBars {
   position: absolute;
   z-index: 10000;
-  width: 50%;
-  height: 50%;
-  left: 25%;
-  top: 25%;
+  width: 65vmin;
+  height: 20vmin;
+  left: 50vw;
+  top: 20vh;
+  transform: translate(-50%, -50%);
+
   text-align: center;
+  align-items: center;
+
   display: flex;
   flex-direction: column;
+
+  user-select: none;
+  background-color: rgba(0, 0, 255, 0.5);
+  border-radius: 2vmin;
 }
 
 .gateClock {
   font-size: 10vmin;
-  display: inline-block;
+  display: inline-flex;
+  align-items: flex-end;
+  flex-grow: 1;
 }
 
 .gateCalendar {
+  flex-grow: 1;
   font-size: 3vmin;
-  display: inline-block;
+  display: block;
 }

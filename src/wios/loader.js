@@ -16,6 +16,8 @@
       for (var i = 0; i < scriptSources.length; i++) {
         var script = document.createElement("script");
         script.src = scriptSources[i];
+        script.defer = true;
+        script.async = false;
         script.type = "text/javascript";
         location.appendChild(script);
       }

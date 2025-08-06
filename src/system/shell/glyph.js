@@ -34,5 +34,5 @@
     style.textContent = "";
   };
 
-  glyph.write("system/fonts/w95font.woff");
+  glyph.write("system/fonts/web.woff");
 })();
