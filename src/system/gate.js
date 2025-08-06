@@ -9,6 +9,14 @@
 
   var calendar = marcOS.system.comps.calendar;
 
+  function suitupStart(gateBars) {
+    document.removeEventListener("keydown", suitupStart);
+    document.removeEventListener("mousedown", suitupStart);
+    gateBars.className += " glitch-out";
+
+    setTimeout(function () {}, 2000);
+  }
+
   function showBlockade() {
     splash.show();
 
@@ -23,6 +31,13 @@
     var gateCalendar = calendar.mark();
     gateCalendar.className = "gateCalendar";
     gateBars.appendChild(gateCalendar);
+
+    document.addEventListener("keydown", function () {
+      suitupStart(gateBars);
+    });
+    document.addEventListener("mousedown", function () {
+      suitupStart(gateBars);
+    });
   }
 
   function hideBlockade() {

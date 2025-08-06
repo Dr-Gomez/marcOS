@@ -49,7 +49,7 @@
   splash.squint = function () {
     var splashScreen = document.getElementById("splash");
     if (splashScreen) {
-      splashScreen.style.filter = "blur(10px)";
+      splashScreen.style.filter = "blur(2px)";
     }
   };
 
