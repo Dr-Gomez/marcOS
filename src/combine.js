@@ -15,6 +15,8 @@
         popup: ["js", "css"],
         splash: ["js", "css"],
       },
+
+      gate: ["js", "css"],
     },
   });
 })();

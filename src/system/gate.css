@@ -1,0 +1,21 @@
+.gateBars {
+  position: absolute;
+  z-index: 10000;
+  width: 50%;
+  height: 50%;
+  left: 25%;
+  top: 25%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.gateClock {
+  font-size: 10vmin;
+  display: inline-block;
+}
+
+.gateCalendar {
+  font-size: 3vmin;
+  display: inline-block;
+}

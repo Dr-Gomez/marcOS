@@ -59,7 +59,6 @@
     var month = months[monthDate];
 
     var timeString = weekday + ", " + date + suffix + " of " + month;
-    console.log(timeString);
     calendar.nodeValue = timeString;
     return calendar;
   }
@@ -83,5 +82,4 @@
   };
 
   marcOS.system.comps.calendar = calendar;
-  calendar.mark();
 })();
