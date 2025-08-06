@@ -14,6 +14,7 @@
       shell: {
         popup: ["js", "css"],
         splash: ["js", "css"],
+        glyph: "js",
       },
 
       gate: ["js", "css"],
