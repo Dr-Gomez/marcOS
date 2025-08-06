@@ -24,8 +24,8 @@
     gateCalendar.className = "gateCalendar";
     gateBars.appendChild(gateCalendar);
 
-    var gateBlinker = document.createElement("span");
-    var message = document.createTextNode("PRESS ENTER...");
+    var gateHandle = document.createElement("div");
+    gateHandle;
   }
 
   function hideBlockade() {

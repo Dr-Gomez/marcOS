@@ -14,8 +14,10 @@
   flex-direction: column;
 
   user-select: none;
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: #1b0033;
   border-radius: 2vmin;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #bf00ff;
+  border: 2px solid #1b0033;
 }
 
 .gateClock {
@@ -23,10 +25,16 @@
   display: inline-flex;
   align-items: flex-end;
   flex-grow: 1;
+  color: #ffffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff,
+    0 0 40px #00e5ff;
+  font-weight: bold;
 }
 
 .gateCalendar {
   flex-grow: 1;
   font-size: 3vmin;
   display: block;
+  color: #e0ccff;
+  text-shadow: 0 0 3px #a020f0, 0 0 6px #a020f0, 0 0 8px #8000ff;
 }

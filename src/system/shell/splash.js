@@ -19,7 +19,7 @@
     if (props.type == "image") {
       splashScreen = document.createElement("img");
       if (typeof props.src == "undefined") {
-        splashScreen.src = "system/default/rosie-pixelated.jpeg";
+        splashScreen.src = "system/default/mech.jpeg";
       } else {
         splashScreen.src = props.src;
       }
