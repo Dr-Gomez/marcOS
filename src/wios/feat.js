@@ -29,41 +29,47 @@
     return false;
   }
 
-  var feat = {};
+  wios.feat = {
+    checkFeatures: function (features, possibleApi) {
+      var absentFeatures = [];
 
-  feat.checkFeatures = function (features, possibleApi) {
-    var absentFeatures = [];
+      setAPI(possibleApi);
 
-    setAPI(possibleApi);
+      for (
+        var featureIndex = 0;
+        featureIndex < features.length;
+        featureIndex++
+      ) {
+        var feature = features[featureIndex];
 
-    for (var featureIndex = 0; featureIndex < features.length; featureIndex++) {
-      var feature = features[featureIndex];
+        var absent = isFeatureAbsent(feature);
 
-      var absent = isFeatureAbsent(feature);
-
-      if (absent) {
-        var latestAbsence = absentFeatures.length;
-        absentFeatures[latestAbsence] = feature;
+        if (absent) {
+          var latestAbsence = absentFeatures.length;
+          absentFeatures[latestAbsence] = feature;
+        }
       }
-    }
 
-    return absentFeatures;
-  };
+      return absentFeatures;
+    },
 
-  feat.hasFeature = function (feature, possibleApi) {
-    setAPI(possibleApi);
-    return !isFeatureAbsent(feature);
-  };
+    hasFeature: function (feature, possibleApi) {
+      setAPI(possibleApi);
+      return !isFeatureAbsent(feature);
+    },
 
-  feat.hasFeatures = function (features, possibleApi) {
-    for (var featureIndex = 0; featureIndex < features.length; featureIndex++) {
-      if (!feat.hasFeature(features[featureIndex], possibleApi)) {
-        return false;
+    hasFeatures: function (features, possibleApi) {
+      for (
+        var featureIndex = 0;
+        featureIndex < features.length;
+        featureIndex++
+      ) {
+        if (!wios.feat.hasFeature(features[featureIndex], possibleApi)) {
+          return false;
+        }
       }
-    }
 
-    return true;
+      return true;
+    },
   };
-
-  wios.feat = feat;
 })();
