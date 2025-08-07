@@ -1,9 +1,9 @@
 (function () {
   var mater = marcOS.kernel.mater;
-  var exists = mater.exists;
-  var groups = mater.groups;
-  var describes = mater.describes;
-  var counts = mater.counts;
+  var isUndefined = mater.isUndefined;
+  var isObject = mater.isObject;
+  var isString = mater.isString;
+  var isNumber = mater.isNumber;
 
   var loader = {};
 
@@ -39,27 +39,27 @@
   };
 
   loader.loadTree = function (tree, path, domain) {
-    if (!exists(path)) {
+    if (isUndefined(path)) {
       path = "";
     }
 
-    if (!exists(domain)) {
+    if (isUndefined(domain)) {
       domain = marcOS;
     }
 
     for (var object in tree) {
       var extension = tree[object];
 
-      if (groups(extension) && counts(extension.length)) {
+      if (isObject(extension) && isNumber(extension.length)) {
         var extIndex = 0;
 
         for (extIndex; extIndex < extension.length; extIndex++) {
           var extensionStr = extension[extIndex];
           loaderMap[extensionStr](path + "/" + object + "." + extensionStr);
         }
-      } else if (describes(extension)) {
+      } else if (isString(extension)) {
         loaderMap[extension](path + "/" + object + "." + extension);
-      } else if (groups(extension)) {
+      } else if (isObject(extension)) {
         domain[object] = {};
         loader.loadTree(extension, path + "/" + object, domain[object]);
       }

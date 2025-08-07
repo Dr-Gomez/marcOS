@@ -1,39 +1,39 @@
 (function () {
   var mater = {};
 
-  mater.exists = function (thing) {
-    return typeof thing != "undefined";
+  mater.isUndefined = function (thing) {
+    return typeof thing == "undefined";
   };
 
-  mater.acts = function (thing) {
+  mater.isFunction = function (thing) {
     return typeof thing == "function";
   };
 
-  mater.groups = function (thing) {
+  mater.isObject = function (thing) {
     return typeof thing == "object" && thing != null;
   };
 
-  mater.nullifies = function (thing) {
+  mater.isNull = function (thing) {
     return typeof thing == "object" && thing == null;
   };
 
-  mater.counts = function (thing) {
+  mater.isNumber = function (thing) {
     return typeof thing == "number";
   };
 
-  mater.delimits = function (thing) {
+  mater.isBigint = function (thing) {
     return typeof thing == "bigint";
   };
 
-  mater.states = function (thing) {
+  mater.isBoolean = function (thing) {
     return typeof thing == "boolean";
   };
 
-  mater.describes = function (thing) {
+  mater.isString = function (thing) {
     return typeof thing == "string";
   };
 
-  mater.identifies = function (thing) {
+  mater.isSymbol = function (thing) {
     return typeof thing == "symbol";
   };
 
